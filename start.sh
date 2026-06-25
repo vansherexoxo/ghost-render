@@ -11,8 +11,7 @@ c.connect()
     lock_key varchar(255) NOT NULL,
     locked integer NOT NULL DEFAULT 0,
     acquired_at varchar(255),
-    released_at varchar(255),
-    CONSTRAINT migrations_lock_pkey PRIMARY KEY (lock_key)
+    released_at varchar(255)
   )\`))
   .then(()=>c.query(\`CREATE TABLE migrations (
     id varchar(255) NOT NULL,
@@ -24,7 +23,7 @@ c.connect()
   )\`))
   .then(()=>c.query(\"INSERT INTO migrations_lock (lock_key, locked) VALUES ('km01', 0)\"))
   .then(()=>{console.log('OK: tables ready');return c.end();})
-  .catch((e)=>{console.error('FATAL DB setup error:',e.message);process.exit(1);});
+  .catch((e)=>{console.error('FATAL:',e.message);process.exit(1);});
 "
 
 exec docker-entrypoint.sh node current/index.js
