@@ -1,3 +1,2 @@
 FROM ghost:5-alpine
-
-ENV database__client=sqlite3
+RUN cd /var/lib/ghost/versions/5.130.6 && npm install pg --save
