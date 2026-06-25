@@ -1,2 +1,2 @@
 FROM ghost:5-alpine
-RUN cd /var/lib/ghost/versions/5.130.6 && npm install pg --save
+RUN cd /var/lib/ghost/versions/5.130.6 && npm install pg --save --legacy-peer-deps
